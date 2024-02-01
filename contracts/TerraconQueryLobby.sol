@@ -62,7 +62,7 @@ contract TerraconQuestLobby {
         roundStartTime[currentRoundNo + 1] = block.timestamp;
         ++currentRoundNo;
 
-        emit RoundStarted(currentRoundNo, tx.origin);
+        emit RoundStarted(currentRoundNo, msg.sender);
     }
 
     function finishRound() external {
@@ -106,7 +106,7 @@ contract TerraconQuestLobby {
     // Play
 
     modifier joinable() {
-        require(players[currentRoundNo][tx.origin] == false, "Already joined");
+        require(players[currentRoundNo][msg.sender] == false, "Already joined");
         require(
             roundStatus[currentRoundNo] == RoundStatus.STARTED,
             "Wait for new round"
@@ -121,14 +121,14 @@ contract TerraconQuestLobby {
     function join() external payable joinable {
         require(msg.value == BUY_IN_FEE, "Invalid join fee");
 
-        players[currentRoundNo][tx.origin] = true;
+        players[currentRoundNo][msg.sender] = true;
         playerCount[currentRoundNo] += 1;
 
-        emit Joined(tx.origin, currentRoundNo, BUY_IN_FEE);
+        emit Joined(msg.sender, currentRoundNo, BUY_IN_FEE);
     }
 
     modifier unjoinable() {
-        require(players[currentRoundNo][tx.origin] == true, "Not joined");
+        require(players[currentRoundNo][msg.sender] == true, "Not joined");
         require(
             roundStatus[currentRoundNo] == RoundStatus.STARTED,
             "Too late to unjoin"
@@ -142,12 +142,12 @@ contract TerraconQuestLobby {
     }
 
     function unjoin() external unjoinable {
-        players[currentRoundNo][tx.origin] = false;
+        players[currentRoundNo][msg.sender] = false;
         playerCount[currentRoundNo] -= 1;
 
-        payable(tx.origin).transfer(BUY_IN_FEE);
+        payable(msg.sender).transfer(BUY_IN_FEE);
 
-        emit Unjoined(tx.origin, currentRoundNo, BUY_IN_FEE);
+        emit Unjoined(msg.sender, currentRoundNo, BUY_IN_FEE);
     }
 
     modifier playable() {
@@ -172,7 +172,7 @@ contract TerraconQuestLobby {
 
     function play() external view playable {
         require(
-            players[currentRoundNo][tx.origin] == true,
+            players[currentRoundNo][msg.sender] == true,
             "You have not joined current round"
         );
 
