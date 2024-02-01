@@ -25,6 +25,8 @@ contract TerraconQuestLobby {
 
     uint public constant PLAYERS_COUNT_PER_LOBBY = 500;
 
+    uint public constant PLAYER_ENTRY_FEE = 0.05 ether;
+
     // roundNo => player => true/false
     mapping(uint => mapping(address => bool)) public players;
 
@@ -105,7 +107,7 @@ contract TerraconQuestLobby {
     }
 
     function join() external payable joinable {
-        require(msg.value == 0.05 ether, "Invalid join fee");
+        require(msg.value == PLAYER_ENTRY_FEE, "Invalid join fee");
 
         players[currentRoundNo][tx.origin] = true;
         playerCount[currentRoundNo] += 1;
