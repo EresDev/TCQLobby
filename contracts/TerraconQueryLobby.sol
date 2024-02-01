@@ -115,6 +115,27 @@ contract TerraconQuestLobby {
         playerCount[currentRoundNo] += 1;
     }
 
+    modifier unjoinable() {
+        require(players[currentRoundNo][tx.origin] == true, "Not joined");
+        require(
+            roundStatus[currentRoundNo] == RoundStatus.STARTED,
+            "Too late to unjoin"
+        );
+        require(
+            roundStartTime[currentRoundNo] + ROUND_PREPARATION_INTERVAL >
+                block.timestamp,
+            "Too late, prep time passed"
+        );
+        _;
+    }
+
+    function unjoin() external unjoinable {
+        players[currentRoundNo][tx.origin] = false;
+        playerCount[currentRoundNo] -= 1;
+
+        payable(tx.origin).transfer(BUY_IN_FEE);
+    }
+
     modifier playable() {
         require(
             roundStatus[currentRoundNo] == RoundStatus.STARTED,
@@ -143,6 +164,6 @@ contract TerraconQuestLobby {
 
         // TODO: add any game play steps, e.g. look for silver mines
         // It is not done because it was not the part of the test
-        // but it expected to have some steps here
+        // but it is expected to have some steps here
     }
 }

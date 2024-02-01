@@ -108,6 +108,32 @@ describe("TerraconQuestLobby", function () {
       );
     });
 
+    it("Should revert unjoin if not joined", async function () {
+      const { lobby, signer1 } = await deployFixture();
+
+      await expect(lobby.unjoin()).to.revertedWith("Not joined");
+    });
+
+    it("Should unjoin and refund during prep time", async function () {
+      const { lobby, signer1 } = await deployFixture();
+
+      await lobby.join({ value: ethers.parseEther("0.05") });
+
+      expect(await lobby.playerCount(1)).to.equal(1);
+
+      expect(
+        await ethers.provider.getBalance(await lobby.getAddress())
+      ).to.equal(ethers.parseEther("0.05"));
+
+      await lobby.unjoin();
+
+      expect(await lobby.playerCount(1)).to.equal(0);
+
+      expect(
+        await ethers.provider.getBalance(await lobby.getAddress())
+      ).to.equal(ethers.parseEther("0"));
+    });
+
     it("Should revert game play if not play time", async function () {
       const { lobby, signer1: otherAccount } = await deployFixture();
       await lobby
