@@ -1,0 +1,1987 @@
+{
+    "contractName": "TerraconQuestLobby",
+    "abi": [
+        {
+            "inputs": [],
+            "stateMutability": "nonpayable",
+            "type": "constructor"
+        },
+        {
+            "inputs": [],
+            "name": "MAX_PLAYERS_PER_LOBBY",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "ROUND_CANCEL_TIME",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "SINGLE_ROUND_TIME",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "cancelRound",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "name": "cancelledRounds",
+            "outputs": [
+                {
+                    "internalType": "bool",
+                    "name": "",
+                    "type": "bool"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "currentRoundNo",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "finishRound",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "name": "players",
+            "outputs": [
+                {
+                    "internalType": "bool",
+                    "name": "",
+                    "type": "bool"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "name": "roundStartTime",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "name": "roundStatus",
+            "outputs": [
+                {
+                    "internalType": "enum TerraconQuestLobby.RoundStatus",
+                    "name": "",
+                    "type": "uint8"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "startNewRound",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        }
+    ],
+    "metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"MAX_PLAYERS_PER_LOBBY\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"ROUND_CANCEL_TIME\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"SINGLE_ROUND_TIME\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"cancelRound\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"cancelledRounds\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"currentRoundNo\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"finishRound\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"players\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"roundStartTime\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"roundStatus\",\"outputs\":[{\"internalType\":\"enum TerraconQuestLobby.RoundStatus\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"startNewRound\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/home/ciao/Projects/TerraconQuestLobby/contracts/TerraconQueryLobby.sol\":\"TerraconQuestLobby\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/ciao/Projects/TerraconQuestLobby/contracts/TerraconQueryLobby.sol\":{\"keccak256\":\"0xf2419d5f5c40d820acd40035af865308141463d9a0e572b1d5313ef6cd8b51b7\",\"license\":\"UNLICENSED\",\"urls\":[\"bzz-raw://4ab5532d87d1063731cd8d3b9bf7fed47508557dccfe734e6a2e49d55535f40d\",\"dweb:/ipfs/QmaQyRBGNXJnaXVNi9KUEfgPpF8nipirdiNSxHjTNNVkSo\"]}},\"version\":1}",
+    "bytecode": "608060405234801561001057600080fd5b5060016000818155526002602052427fe90b7bceb6e7df5418fb78d8ee546e97c83a08bbccc01a0644d599ccd2a7c2e0556103d5806100506000396000f3fe608060405234801561001057600080fd5b50600436106100a95760003560e01c8063bd85948c11610071578063bd85948c14610110578063c0f8092114610118578063c137a60f14610146578063c9067cbe14610166578063d44bfee914610166578063e35154a51461016f57600080fd5b80631a8fb62e146100ae578063547916ea146100ca57806386a594d0146100ca57806388f75fdc146100d4578063b7a4395d146100dd575b600080fd5b6100b760005481565b6040519081526020015b60405180910390f35b6100d261019f565b005b6100b76101f481565b6101006100eb3660046102c4565b60046020526000908152604090205460ff1681565b60405190151581526020016100c1565b6100d261028b565b6101006101263660046102dd565b600360209081526000928352604080842090915290825290205460ff1681565b6100b76101543660046102c4565b60026020526000908152604090205481565b6100b7610e1081565b61019261017d3660046102c4565b60016020526000908152604090205460ff1681565b6040516100c1919061032f565b6000805481526001602052604081205460ff1660028111156101c3576101c3610319565b146102095760405162461bcd60e51b8152602060048201526011602482015270149bdd5b99081b9bdd081cdd185c9d1959607a1b60448201526064015b60405180910390fd5b60008054815260026020526040902054429061022890610e109061036d565b1061026c5760405162461bcd60e51b8152602060048201526014602482015273149bdd5b99081d1a5b59481b9bdd08195b99195960621b6044820152606401610200565b600080548152600160208190526040909120805460ff19169091179055565b42600260008054600161029e919061036d565b81526020019081526020016000208190555060008081546102be90610386565b90915550565b6000602082840312156102d657600080fd5b5035919050565b600080604083850312156102f057600080fd5b8235915060208301356001600160a01b038116811461030e57600080fd5b809150509250929050565b634e487b7160e01b600052602160045260246000fd5b602081016003831061035157634e487b7160e01b600052602160045260246000fd5b91905290565b634e487b7160e01b600052601160045260246000fd5b8082018082111561038057610380610357565b92915050565b60006001820161039857610398610357565b506001019056fea2646970667358221220b29772ada35b0642a1d6e32708bf71784ea24a5e07b1f0e9fd37c9b2b2e9eb3264736f6c63430008130033",
+    "deployedBytecode": "608060405234801561001057600080fd5b50600436106100a95760003560e01c8063bd85948c11610071578063bd85948c14610110578063c0f8092114610118578063c137a60f14610146578063c9067cbe14610166578063d44bfee914610166578063e35154a51461016f57600080fd5b80631a8fb62e146100ae578063547916ea146100ca57806386a594d0146100ca57806388f75fdc146100d4578063b7a4395d146100dd575b600080fd5b6100b760005481565b6040519081526020015b60405180910390f35b6100d261019f565b005b6100b76101f481565b6101006100eb3660046102c4565b60046020526000908152604090205460ff1681565b60405190151581526020016100c1565b6100d261028b565b6101006101263660046102dd565b600360209081526000928352604080842090915290825290205460ff1681565b6100b76101543660046102c4565b60026020526000908152604090205481565b6100b7610e1081565b61019261017d3660046102c4565b60016020526000908152604090205460ff1681565b6040516100c1919061032f565b6000805481526001602052604081205460ff1660028111156101c3576101c3610319565b146102095760405162461bcd60e51b8152602060048201526011602482015270149bdd5b99081b9bdd081cdd185c9d1959607a1b60448201526064015b60405180910390fd5b60008054815260026020526040902054429061022890610e109061036d565b1061026c5760405162461bcd60e51b8152602060048201526014602482015273149bdd5b99081d1a5b59481b9bdd08195b99195960621b6044820152606401610200565b600080548152600160208190526040909120805460ff19169091179055565b42600260008054600161029e919061036d565b81526020019081526020016000208190555060008081546102be90610386565b90915550565b6000602082840312156102d657600080fd5b5035919050565b600080604083850312156102f057600080fd5b8235915060208301356001600160a01b038116811461030e57600080fd5b809150509250929050565b634e487b7160e01b600052602160045260246000fd5b602081016003831061035157634e487b7160e01b600052602160045260246000fd5b91905290565b634e487b7160e01b600052601160045260246000fd5b8082018082111561038057610380610357565b92915050565b60006001820161039857610398610357565b506001019056fea2646970667358221220b29772ada35b0642a1d6e32708bf71784ea24a5e07b1f0e9fd37c9b2b2e9eb3264736f6c63430008130033",
+    "sourceMap": "140:1834:0:-:0;;;877:107;;;;;;;;;-1:-1:-1;918:1:0;901:14;:18;;;929:30;:14;:30;;962:15;929:30;:48;140:1834;;;;;;",
+    "deployedSourceMap": "140:1834:0:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;174:26;;;;;;;;;160:25:1;;;148:2;133:18;174:26:0;;;;;;;;1194:386;;;:::i;:::-;;562:48;;607:3;562:48;;720:44;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;546:14:1;;539:22;521:41;;509:2;494:18;720:44:0;381:187:1;1059:129:0;;;:::i;657:56::-;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;396:43;;;;;;:::i;:::-;;;;;;;;;;;;;;446:51;;487:10;446:51;;315:47;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;:::i;1194:386::-;1288:19;1269:14;;1257:27;;:11;:27;;;;;;;;:50;;;;;;;;:::i;:::-;;1236:114;;;;-1:-1:-1;;;1236:114:0;;1612:2:1;1236:114:0;;;1594:21:1;1651:2;1631:18;;;1624:30;-1:-1:-1;;;1670:18:1;;;1663:47;1727:18;;1236:114:0;;;;;;;;;1382:30;1397:14;;1382:30;;:14;:30;;;;;;1451:15;;1382:50;;487:10;;1382:50;:::i;:::-;:84;1361:151;;;;-1:-1:-1;;;1361:151:0;;2220:2:1;1361:151:0;;;2202:21:1;2259:2;2239:18;;;2232:30;-1:-1:-1;;;2278:18:1;;;2271:50;2338:18;;1361:151:0;2018:344:1;1361:151:0;1523:27;1535:14;;1523:27;;1553:20;1523:27;;;;;;;;:50;;-1:-1:-1;;1523:50:0;;;;;;1194:386::o;1059:129::-;1140:15;1103:14;:34;1118:14;;1135:1;1118:18;;;;:::i;:::-;1103:34;;;;;;;;;;;:52;;;;1167:14;;1165:16;;;;;:::i;:::-;;;;-1:-1:-1;1059:129:0:o;196:180:1:-;255:6;308:2;296:9;287:7;283:23;279:32;276:52;;;324:1;321;314:12;276:52;-1:-1:-1;347:23:1;;196:180;-1:-1:-1;196:180:1:o;573:354::-;641:6;649;702:2;690:9;681:7;677:23;673:32;670:52;;;718:1;715;708:12;670:52;741:23;;;-1:-1:-1;814:2:1;799:18;;786:32;-1:-1:-1;;;;;847:31:1;;837:42;;827:70;;893:1;890;883:12;827:70;916:5;906:15;;;573:354;;;;;:::o;932:127::-;993:10;988:3;984:20;981:1;974:31;1024:4;1021:1;1014:15;1048:4;1045:1;1038:15;1064:341;1209:2;1194:18;;1242:1;1231:13;;1221:144;;1287:10;1282:3;1278:20;1275:1;1268:31;1322:4;1319:1;1312:15;1350:4;1347:1;1340:15;1221:144;1374:25;;;1064:341;:::o;1756:127::-;1817:10;1812:3;1808:20;1805:1;1798:31;1848:4;1845:1;1838:15;1872:4;1869:1;1862:15;1888:125;1953:9;;;1974:10;;;1971:36;;;1987:18;;:::i;:::-;1888:125;;;;:::o;2367:135::-;2406:3;2427:17;;;2424:43;;2447:18;;:::i;:::-;-1:-1:-1;2494:1:1;2483:13;;2367:135::o",
+    "sourcePath": "/home/ciao/Projects/TerraconQuestLobby/contracts/TerraconQueryLobby.sol",
+    "compiler": {
+        "name": "solc",
+        "version": "0.8.19+commit.7dd6d404"
+    },
+    "ast": {
+        "absolutePath": "/home/ciao/Projects/TerraconQuestLobby/contracts/TerraconQueryLobby.sol",
+        "exportedSymbols": {
+            "TerraconQuestLobby": [
+                139
+            ]
+        },
+        "id": 140,
+        "license": "UNLICENSED",
+        "nodeType": "SourceUnit",
+        "nodes": [
+            {
+                "id": 1,
+                "literals": [
+                    "solidity",
+                    "^",
+                    "0.8",
+                    ".9"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "39:23:0"
+            },
+            {
+                "abstract": false,
+                "baseContracts": [],
+                "canonicalName": "TerraconQuestLobby",
+                "contractDependencies": [],
+                "contractKind": "contract",
+                "fullyImplemented": true,
+                "id": 139,
+                "linearizedBaseContracts": [
+                    139
+                ],
+                "name": "TerraconQuestLobby",
+                "nameLocation": "149:18:0",
+                "nodeType": "ContractDefinition",
+                "nodes": [
+                    {
+                        "constant": false,
+                        "functionSelector": "1a8fb62e",
+                        "id": 3,
+                        "mutability": "mutable",
+                        "name": "currentRoundNo",
+                        "nameLocation": "186:14:0",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 139,
+                        "src": "174:26:0",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                        },
+                        "typeName": {
+                            "id": 2,
+                            "name": "uint",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "174:4:0",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                            }
+                        },
+                        "visibility": "public"
+                    },
+                    {
+                        "canonicalName": "TerraconQuestLobby.RoundStatus",
+                        "id": 7,
+                        "members": [
+                            {
+                                "id": 4,
+                                "name": "STARTED",
+                                "nameLocation": "234:7:0",
+                                "nodeType": "EnumValue",
+                                "src": "234:7:0"
+                            },
+                            {
+                                "id": 5,
+                                "name": "FINISHED",
+                                "nameLocation": "251:8:0",
+                                "nodeType": "EnumValue",
+                                "src": "251:8:0"
+                            },
+                            {
+                                "id": 6,
+                                "name": "CANCELLED",
+                                "nameLocation": "269:9:0",
+                                "nodeType": "EnumValue",
+                                "src": "269:9:0"
+                            }
+                        ],
+                        "name": "RoundStatus",
+                        "nameLocation": "212:11:0",
+                        "nodeType": "EnumDefinition",
+                        "src": "207:77:0"
+                    },
+                    {
+                        "constant": false,
+                        "functionSelector": "e35154a5",
+                        "id": 12,
+                        "mutability": "mutable",
+                        "name": "roundStatus",
+                        "nameLocation": "351:11:0",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 139,
+                        "src": "315:47:0",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_uint256_$_t_enum$_RoundStatus_$7_$",
+                            "typeString": "mapping(uint256 => enum TerraconQuestLobby.RoundStatus)"
+                        },
+                        "typeName": {
+                            "id": 11,
+                            "keyName": "",
+                            "keyNameLocation": "-1:-1:-1",
+                            "keyType": {
+                                "id": 8,
+                                "name": "uint",
+                                "nodeType": "ElementaryTypeName",
+                                "src": "323:4:0",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                }
+                            },
+                            "nodeType": "Mapping",
+                            "src": "315:28:0",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_mapping$_t_uint256_$_t_enum$_RoundStatus_$7_$",
+                                "typeString": "mapping(uint256 => enum TerraconQuestLobby.RoundStatus)"
+                            },
+                            "valueName": "",
+                            "valueNameLocation": "-1:-1:-1",
+                            "valueType": {
+                                "id": 10,
+                                "nodeType": "UserDefinedTypeName",
+                                "pathNode": {
+                                    "id": 9,
+                                    "name": "RoundStatus",
+                                    "nameLocations": [
+                                        "331:11:0"
+                                    ],
+                                    "nodeType": "IdentifierPath",
+                                    "referencedDeclaration": 7,
+                                    "src": "331:11:0"
+                                },
+                                "referencedDeclaration": 7,
+                                "src": "331:11:0",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_enum$_RoundStatus_$7",
+                                    "typeString": "enum TerraconQuestLobby.RoundStatus"
+                                }
+                            }
+                        },
+                        "visibility": "public"
+                    },
+                    {
+                        "constant": false,
+                        "functionSelector": "c137a60f",
+                        "id": 16,
+                        "mutability": "mutable",
+                        "name": "roundStartTime",
+                        "nameLocation": "425:14:0",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 139,
+                        "src": "396:43:0",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
+                            "typeString": "mapping(uint256 => uint256)"
+                        },
+                        "typeName": {
+                            "id": 15,
+                            "keyName": "",
+                            "keyNameLocation": "-1:-1:-1",
+                            "keyType": {
+                                "id": 13,
+                                "name": "uint",
+                                "nodeType": "ElementaryTypeName",
+                                "src": "404:4:0",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                }
+                            },
+                            "nodeType": "Mapping",
+                            "src": "396:21:0",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
+                                "typeString": "mapping(uint256 => uint256)"
+                            },
+                            "valueName": "",
+                            "valueNameLocation": "-1:-1:-1",
+                            "valueType": {
+                                "id": 14,
+                                "name": "uint",
+                                "nodeType": "ElementaryTypeName",
+                                "src": "412:4:0",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                }
+                            }
+                        },
+                        "visibility": "public"
+                    },
+                    {
+                        "constant": true,
+                        "functionSelector": "c9067cbe",
+                        "id": 19,
+                        "mutability": "constant",
+                        "name": "SINGLE_ROUND_TIME",
+                        "nameLocation": "467:17:0",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 139,
+                        "src": "446:51:0",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                        },
+                        "typeName": {
+                            "id": 17,
+                            "name": "uint",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "446:4:0",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                            }
+                        },
+                        "value": {
+                            "hexValue": "3630",
+                            "id": 18,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "number",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "487:10:0",
+                            "subdenomination": "minutes",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_rational_3600_by_1",
+                                "typeString": "int_const 3600"
+                            },
+                            "value": "60"
+                        },
+                        "visibility": "public"
+                    },
+                    {
+                        "constant": true,
+                        "functionSelector": "d44bfee9",
+                        "id": 22,
+                        "mutability": "constant",
+                        "name": "ROUND_CANCEL_TIME",
+                        "nameLocation": "525:17:0",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 139,
+                        "src": "504:51:0",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                        },
+                        "typeName": {
+                            "id": 20,
+                            "name": "uint",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "504:4:0",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                            }
+                        },
+                        "value": {
+                            "hexValue": "3630",
+                            "id": 21,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "number",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "545:10:0",
+                            "subdenomination": "minutes",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_rational_3600_by_1",
+                                "typeString": "int_const 3600"
+                            },
+                            "value": "60"
+                        },
+                        "visibility": "public"
+                    },
+                    {
+                        "constant": true,
+                        "functionSelector": "88f75fdc",
+                        "id": 25,
+                        "mutability": "constant",
+                        "name": "MAX_PLAYERS_PER_LOBBY",
+                        "nameLocation": "583:21:0",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 139,
+                        "src": "562:48:0",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                        },
+                        "typeName": {
+                            "id": 23,
+                            "name": "uint",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "562:4:0",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                            }
+                        },
+                        "value": {
+                            "hexValue": "353030",
+                            "id": 24,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "number",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "607:3:0",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_rational_500_by_1",
+                                "typeString": "int_const 500"
+                            },
+                            "value": "500"
+                        },
+                        "visibility": "public"
+                    },
+                    {
+                        "constant": false,
+                        "functionSelector": "c0f80921",
+                        "id": 31,
+                        "mutability": "mutable",
+                        "name": "players",
+                        "nameLocation": "706:7:0",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 139,
+                        "src": "657:56:0",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_address_$_t_bool_$_$",
+                            "typeString": "mapping(uint256 => mapping(address => bool))"
+                        },
+                        "typeName": {
+                            "id": 30,
+                            "keyName": "",
+                            "keyNameLocation": "-1:-1:-1",
+                            "keyType": {
+                                "id": 26,
+                                "name": "uint",
+                                "nodeType": "ElementaryTypeName",
+                                "src": "665:4:0",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                }
+                            },
+                            "nodeType": "Mapping",
+                            "src": "657:41:0",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_address_$_t_bool_$_$",
+                                "typeString": "mapping(uint256 => mapping(address => bool))"
+                            },
+                            "valueName": "",
+                            "valueNameLocation": "-1:-1:-1",
+                            "valueType": {
+                                "id": 29,
+                                "keyName": "",
+                                "keyNameLocation": "-1:-1:-1",
+                                "keyType": {
+                                    "id": 27,
+                                    "name": "address",
+                                    "nodeType": "ElementaryTypeName",
+                                    "src": "681:7:0",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    }
+                                },
+                                "nodeType": "Mapping",
+                                "src": "673:24:0",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+                                    "typeString": "mapping(address => bool)"
+                                },
+                                "valueName": "",
+                                "valueNameLocation": "-1:-1:-1",
+                                "valueType": {
+                                    "id": 28,
+                                    "name": "bool",
+                                    "nodeType": "ElementaryTypeName",
+                                    "src": "692:4:0",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_bool",
+                                        "typeString": "bool"
+                                    }
+                                }
+                            }
+                        },
+                        "visibility": "public"
+                    },
+                    {
+                        "constant": false,
+                        "functionSelector": "b7a4395d",
+                        "id": 35,
+                        "mutability": "mutable",
+                        "name": "cancelledRounds",
+                        "nameLocation": "749:15:0",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 139,
+                        "src": "720:44:0",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_uint256_$_t_bool_$",
+                            "typeString": "mapping(uint256 => bool)"
+                        },
+                        "typeName": {
+                            "id": 34,
+                            "keyName": "",
+                            "keyNameLocation": "-1:-1:-1",
+                            "keyType": {
+                                "id": 32,
+                                "name": "uint",
+                                "nodeType": "ElementaryTypeName",
+                                "src": "728:4:0",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                }
+                            },
+                            "nodeType": "Mapping",
+                            "src": "720:21:0",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_mapping$_t_uint256_$_t_bool_$",
+                                "typeString": "mapping(uint256 => bool)"
+                            },
+                            "valueName": "",
+                            "valueNameLocation": "-1:-1:-1",
+                            "valueType": {
+                                "id": 33,
+                                "name": "bool",
+                                "nodeType": "ElementaryTypeName",
+                                "src": "736:4:0",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_bool",
+                                    "typeString": "bool"
+                                }
+                            }
+                        },
+                        "visibility": "public"
+                    },
+                    {
+                        "constant": false,
+                        "id": 41,
+                        "mutability": "mutable",
+                        "name": "refunds",
+                        "nameLocation": "863:7:0",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 139,
+                        "src": "821:49:0",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_address_$_t_bool_$_$",
+                            "typeString": "mapping(uint256 => mapping(address => bool))"
+                        },
+                        "typeName": {
+                            "id": 40,
+                            "keyName": "",
+                            "keyNameLocation": "-1:-1:-1",
+                            "keyType": {
+                                "id": 36,
+                                "name": "uint",
+                                "nodeType": "ElementaryTypeName",
+                                "src": "829:4:0",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_uint256",
+                                    "typeString": "uint256"
+                                }
+                            },
+                            "nodeType": "Mapping",
+                            "src": "821:41:0",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_address_$_t_bool_$_$",
+                                "typeString": "mapping(uint256 => mapping(address => bool))"
+                            },
+                            "valueName": "",
+                            "valueNameLocation": "-1:-1:-1",
+                            "valueType": {
+                                "id": 39,
+                                "keyName": "",
+                                "keyNameLocation": "-1:-1:-1",
+                                "keyType": {
+                                    "id": 37,
+                                    "name": "address",
+                                    "nodeType": "ElementaryTypeName",
+                                    "src": "845:7:0",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    }
+                                },
+                                "nodeType": "Mapping",
+                                "src": "837:24:0",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+                                    "typeString": "mapping(address => bool)"
+                                },
+                                "valueName": "",
+                                "valueNameLocation": "-1:-1:-1",
+                                "valueType": {
+                                    "id": 38,
+                                    "name": "bool",
+                                    "nodeType": "ElementaryTypeName",
+                                    "src": "856:4:0",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_bool",
+                                        "typeString": "bool"
+                                    }
+                                }
+                            }
+                        },
+                        "visibility": "internal"
+                    },
+                    {
+                        "body": {
+                            "id": 55,
+                            "nodeType": "Block",
+                            "src": "891:93:0",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "id": 46,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "leftHandSide": {
+                                            "id": 44,
+                                            "name": "currentRoundNo",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 3,
+                                            "src": "901:14:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "nodeType": "Assignment",
+                                        "operator": "=",
+                                        "rightHandSide": {
+                                            "hexValue": "31",
+                                            "id": 45,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": true,
+                                            "kind": "number",
+                                            "lValueRequested": false,
+                                            "nodeType": "Literal",
+                                            "src": "918:1:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_rational_1_by_1",
+                                                "typeString": "int_const 1"
+                                            },
+                                            "value": "1"
+                                        },
+                                        "src": "901:18:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "id": 47,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "901:18:0"
+                                },
+                                {
+                                    "expression": {
+                                        "id": 53,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "leftHandSide": {
+                                            "baseExpression": {
+                                                "id": 48,
+                                                "name": "roundStartTime",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 16,
+                                                "src": "929:14:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
+                                                    "typeString": "mapping(uint256 => uint256)"
+                                                }
+                                            },
+                                            "id": 50,
+                                            "indexExpression": {
+                                                "id": 49,
+                                                "name": "currentRoundNo",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 3,
+                                                "src": "944:14:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                }
+                                            },
+                                            "isConstant": false,
+                                            "isLValue": true,
+                                            "isPure": false,
+                                            "lValueRequested": true,
+                                            "nodeType": "IndexAccess",
+                                            "src": "929:30:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "nodeType": "Assignment",
+                                        "operator": "=",
+                                        "rightHandSide": {
+                                            "expression": {
+                                                "id": 51,
+                                                "name": "block",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 4294967292,
+                                                "src": "962:5:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_magic_block",
+                                                    "typeString": "block"
+                                                }
+                                            },
+                                            "id": 52,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": false,
+                                            "lValueRequested": false,
+                                            "memberLocation": "968:9:0",
+                                            "memberName": "timestamp",
+                                            "nodeType": "MemberAccess",
+                                            "src": "962:15:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "src": "929:48:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "id": 54,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "929:48:0"
+                                }
+                            ]
+                        },
+                        "id": 56,
+                        "implemented": true,
+                        "kind": "constructor",
+                        "modifiers": [],
+                        "name": "",
+                        "nameLocation": "-1:-1:-1",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 42,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "888:2:0"
+                        },
+                        "returnParameters": {
+                            "id": 43,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "891:0:0"
+                        },
+                        "scope": 139,
+                        "src": "877:107:0",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "public"
+                    },
+                    {
+                        "body": {
+                            "id": 71,
+                            "nodeType": "Block",
+                            "src": "1093:95:0",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "id": 66,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "leftHandSide": {
+                                            "baseExpression": {
+                                                "id": 59,
+                                                "name": "roundStartTime",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 16,
+                                                "src": "1103:14:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
+                                                    "typeString": "mapping(uint256 => uint256)"
+                                                }
+                                            },
+                                            "id": 63,
+                                            "indexExpression": {
+                                                "commonType": {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                },
+                                                "id": 62,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "leftExpression": {
+                                                    "id": 60,
+                                                    "name": "currentRoundNo",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 3,
+                                                    "src": "1118:14:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_uint256",
+                                                        "typeString": "uint256"
+                                                    }
+                                                },
+                                                "nodeType": "BinaryOperation",
+                                                "operator": "+",
+                                                "rightExpression": {
+                                                    "hexValue": "31",
+                                                    "id": 61,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": true,
+                                                    "kind": "number",
+                                                    "lValueRequested": false,
+                                                    "nodeType": "Literal",
+                                                    "src": "1135:1:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_rational_1_by_1",
+                                                        "typeString": "int_const 1"
+                                                    },
+                                                    "value": "1"
+                                                },
+                                                "src": "1118:18:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                }
+                                            },
+                                            "isConstant": false,
+                                            "isLValue": true,
+                                            "isPure": false,
+                                            "lValueRequested": true,
+                                            "nodeType": "IndexAccess",
+                                            "src": "1103:34:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "nodeType": "Assignment",
+                                        "operator": "=",
+                                        "rightHandSide": {
+                                            "expression": {
+                                                "id": 64,
+                                                "name": "block",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 4294967292,
+                                                "src": "1140:5:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_magic_block",
+                                                    "typeString": "block"
+                                                }
+                                            },
+                                            "id": 65,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": false,
+                                            "lValueRequested": false,
+                                            "memberLocation": "1146:9:0",
+                                            "memberName": "timestamp",
+                                            "nodeType": "MemberAccess",
+                                            "src": "1140:15:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "src": "1103:52:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "id": 67,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "1103:52:0"
+                                },
+                                {
+                                    "expression": {
+                                        "id": 69,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "nodeType": "UnaryOperation",
+                                        "operator": "++",
+                                        "prefix": true,
+                                        "src": "1165:16:0",
+                                        "subExpression": {
+                                            "id": 68,
+                                            "name": "currentRoundNo",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 3,
+                                            "src": "1167:14:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "id": 70,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "1165:16:0"
+                                }
+                            ]
+                        },
+                        "functionSelector": "bd85948c",
+                        "id": 72,
+                        "implemented": true,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "startNewRound",
+                        "nameLocation": "1068:13:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 57,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "1081:2:0"
+                        },
+                        "returnParameters": {
+                            "id": 58,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "1093:0:0"
+                        },
+                        "scope": 139,
+                        "src": "1059:129:0",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "external"
+                    },
+                    {
+                        "body": {
+                            "id": 104,
+                            "nodeType": "Block",
+                            "src": "1226:354:0",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "arguments": [
+                                            {
+                                                "commonType": {
+                                                    "typeIdentifier": "t_enum$_RoundStatus_$7",
+                                                    "typeString": "enum TerraconQuestLobby.RoundStatus"
+                                                },
+                                                "id": 81,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "leftExpression": {
+                                                    "baseExpression": {
+                                                        "id": 76,
+                                                        "name": "roundStatus",
+                                                        "nodeType": "Identifier",
+                                                        "overloadedDeclarations": [],
+                                                        "referencedDeclaration": 12,
+                                                        "src": "1257:11:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_mapping$_t_uint256_$_t_enum$_RoundStatus_$7_$",
+                                                            "typeString": "mapping(uint256 => enum TerraconQuestLobby.RoundStatus)"
+                                                        }
+                                                    },
+                                                    "id": 78,
+                                                    "indexExpression": {
+                                                        "id": 77,
+                                                        "name": "currentRoundNo",
+                                                        "nodeType": "Identifier",
+                                                        "overloadedDeclarations": [],
+                                                        "referencedDeclaration": 3,
+                                                        "src": "1269:14:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_uint256",
+                                                            "typeString": "uint256"
+                                                        }
+                                                    },
+                                                    "isConstant": false,
+                                                    "isLValue": true,
+                                                    "isPure": false,
+                                                    "lValueRequested": false,
+                                                    "nodeType": "IndexAccess",
+                                                    "src": "1257:27:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_enum$_RoundStatus_$7",
+                                                        "typeString": "enum TerraconQuestLobby.RoundStatus"
+                                                    }
+                                                },
+                                                "nodeType": "BinaryOperation",
+                                                "operator": "==",
+                                                "rightExpression": {
+                                                    "expression": {
+                                                        "id": 79,
+                                                        "name": "RoundStatus",
+                                                        "nodeType": "Identifier",
+                                                        "overloadedDeclarations": [],
+                                                        "referencedDeclaration": 7,
+                                                        "src": "1288:11:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_type$_t_enum$_RoundStatus_$7_$",
+                                                            "typeString": "type(enum TerraconQuestLobby.RoundStatus)"
+                                                        }
+                                                    },
+                                                    "id": 80,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": true,
+                                                    "lValueRequested": false,
+                                                    "memberLocation": "1300:7:0",
+                                                    "memberName": "STARTED",
+                                                    "nodeType": "MemberAccess",
+                                                    "referencedDeclaration": 4,
+                                                    "src": "1288:19:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_enum$_RoundStatus_$7",
+                                                        "typeString": "enum TerraconQuestLobby.RoundStatus"
+                                                    }
+                                                },
+                                                "src": "1257:50:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                }
+                                            },
+                                            {
+                                                "hexValue": "526f756e64206e6f742073746172746564",
+                                                "id": 82,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": true,
+                                                "kind": "string",
+                                                "lValueRequested": false,
+                                                "nodeType": "Literal",
+                                                "src": "1321:19:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_stringliteral_210f5df0dc4b85ae79e41a7bfea40e58bf9f7435a6c45d2c7bd569ae680518f1",
+                                                    "typeString": "literal_string \"Round not started\""
+                                                },
+                                                "value": "Round not started"
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                },
+                                                {
+                                                    "typeIdentifier": "t_stringliteral_210f5df0dc4b85ae79e41a7bfea40e58bf9f7435a6c45d2c7bd569ae680518f1",
+                                                    "typeString": "literal_string \"Round not started\""
+                                                }
+                                            ],
+                                            "id": 75,
+                                            "name": "require",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [
+                                                4294967278,
+                                                4294967278
+                                            ],
+                                            "referencedDeclaration": 4294967278,
+                                            "src": "1236:7:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                                                "typeString": "function (bool,string memory) pure"
+                                            }
+                                        },
+                                        "id": 83,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "nameLocations": [],
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "1236:114:0",
+                                        "tryCall": false,
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_tuple$__$",
+                                            "typeString": "tuple()"
+                                        }
+                                    },
+                                    "id": 84,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "1236:114:0"
+                                },
+                                {
+                                    "expression": {
+                                        "arguments": [
+                                            {
+                                                "commonType": {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                },
+                                                "id": 93,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "leftExpression": {
+                                                    "commonType": {
+                                                        "typeIdentifier": "t_uint256",
+                                                        "typeString": "uint256"
+                                                    },
+                                                    "id": 90,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": false,
+                                                    "lValueRequested": false,
+                                                    "leftExpression": {
+                                                        "baseExpression": {
+                                                            "id": 86,
+                                                            "name": "roundStartTime",
+                                                            "nodeType": "Identifier",
+                                                            "overloadedDeclarations": [],
+                                                            "referencedDeclaration": 16,
+                                                            "src": "1382:14:0",
+                                                            "typeDescriptions": {
+                                                                "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
+                                                                "typeString": "mapping(uint256 => uint256)"
+                                                            }
+                                                        },
+                                                        "id": 88,
+                                                        "indexExpression": {
+                                                            "id": 87,
+                                                            "name": "currentRoundNo",
+                                                            "nodeType": "Identifier",
+                                                            "overloadedDeclarations": [],
+                                                            "referencedDeclaration": 3,
+                                                            "src": "1397:14:0",
+                                                            "typeDescriptions": {
+                                                                "typeIdentifier": "t_uint256",
+                                                                "typeString": "uint256"
+                                                            }
+                                                        },
+                                                        "isConstant": false,
+                                                        "isLValue": true,
+                                                        "isPure": false,
+                                                        "lValueRequested": false,
+                                                        "nodeType": "IndexAccess",
+                                                        "src": "1382:30:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_uint256",
+                                                            "typeString": "uint256"
+                                                        }
+                                                    },
+                                                    "nodeType": "BinaryOperation",
+                                                    "operator": "+",
+                                                    "rightExpression": {
+                                                        "id": 89,
+                                                        "name": "SINGLE_ROUND_TIME",
+                                                        "nodeType": "Identifier",
+                                                        "overloadedDeclarations": [],
+                                                        "referencedDeclaration": 19,
+                                                        "src": "1415:17:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_uint256",
+                                                            "typeString": "uint256"
+                                                        }
+                                                    },
+                                                    "src": "1382:50:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_uint256",
+                                                        "typeString": "uint256"
+                                                    }
+                                                },
+                                                "nodeType": "BinaryOperation",
+                                                "operator": "<",
+                                                "rightExpression": {
+                                                    "expression": {
+                                                        "id": 91,
+                                                        "name": "block",
+                                                        "nodeType": "Identifier",
+                                                        "overloadedDeclarations": [],
+                                                        "referencedDeclaration": 4294967292,
+                                                        "src": "1451:5:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_magic_block",
+                                                            "typeString": "block"
+                                                        }
+                                                    },
+                                                    "id": 92,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": false,
+                                                    "lValueRequested": false,
+                                                    "memberLocation": "1457:9:0",
+                                                    "memberName": "timestamp",
+                                                    "nodeType": "MemberAccess",
+                                                    "src": "1451:15:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_uint256",
+                                                        "typeString": "uint256"
+                                                    }
+                                                },
+                                                "src": "1382:84:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                }
+                                            },
+                                            {
+                                                "hexValue": "526f756e642074696d65206e6f7420656e646564",
+                                                "id": 94,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": true,
+                                                "kind": "string",
+                                                "lValueRequested": false,
+                                                "nodeType": "Literal",
+                                                "src": "1480:22:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_stringliteral_cf60d27d9f34cf8ccc3aa64160b5b858711282194013523cd977c89ea5d4586e",
+                                                    "typeString": "literal_string \"Round time not ended\""
+                                                },
+                                                "value": "Round time not ended"
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                },
+                                                {
+                                                    "typeIdentifier": "t_stringliteral_cf60d27d9f34cf8ccc3aa64160b5b858711282194013523cd977c89ea5d4586e",
+                                                    "typeString": "literal_string \"Round time not ended\""
+                                                }
+                                            ],
+                                            "id": 85,
+                                            "name": "require",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [
+                                                4294967278,
+                                                4294967278
+                                            ],
+                                            "referencedDeclaration": 4294967278,
+                                            "src": "1361:7:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                                                "typeString": "function (bool,string memory) pure"
+                                            }
+                                        },
+                                        "id": 95,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "nameLocations": [],
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "1361:151:0",
+                                        "tryCall": false,
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_tuple$__$",
+                                            "typeString": "tuple()"
+                                        }
+                                    },
+                                    "id": 96,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "1361:151:0"
+                                },
+                                {
+                                    "expression": {
+                                        "id": 102,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "leftHandSide": {
+                                            "baseExpression": {
+                                                "id": 97,
+                                                "name": "roundStatus",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 12,
+                                                "src": "1523:11:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_mapping$_t_uint256_$_t_enum$_RoundStatus_$7_$",
+                                                    "typeString": "mapping(uint256 => enum TerraconQuestLobby.RoundStatus)"
+                                                }
+                                            },
+                                            "id": 99,
+                                            "indexExpression": {
+                                                "id": 98,
+                                                "name": "currentRoundNo",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 3,
+                                                "src": "1535:14:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                }
+                                            },
+                                            "isConstant": false,
+                                            "isLValue": true,
+                                            "isPure": false,
+                                            "lValueRequested": true,
+                                            "nodeType": "IndexAccess",
+                                            "src": "1523:27:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_enum$_RoundStatus_$7",
+                                                "typeString": "enum TerraconQuestLobby.RoundStatus"
+                                            }
+                                        },
+                                        "nodeType": "Assignment",
+                                        "operator": "=",
+                                        "rightHandSide": {
+                                            "expression": {
+                                                "id": 100,
+                                                "name": "RoundStatus",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 7,
+                                                "src": "1553:11:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_type$_t_enum$_RoundStatus_$7_$",
+                                                    "typeString": "type(enum TerraconQuestLobby.RoundStatus)"
+                                                }
+                                            },
+                                            "id": 101,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": true,
+                                            "lValueRequested": false,
+                                            "memberLocation": "1565:8:0",
+                                            "memberName": "FINISHED",
+                                            "nodeType": "MemberAccess",
+                                            "referencedDeclaration": 5,
+                                            "src": "1553:20:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_enum$_RoundStatus_$7",
+                                                "typeString": "enum TerraconQuestLobby.RoundStatus"
+                                            }
+                                        },
+                                        "src": "1523:50:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_enum$_RoundStatus_$7",
+                                            "typeString": "enum TerraconQuestLobby.RoundStatus"
+                                        }
+                                    },
+                                    "id": 103,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "1523:50:0"
+                                }
+                            ]
+                        },
+                        "functionSelector": "547916ea",
+                        "id": 105,
+                        "implemented": true,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "finishRound",
+                        "nameLocation": "1203:11:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 73,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "1214:2:0"
+                        },
+                        "returnParameters": {
+                            "id": 74,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "1226:0:0"
+                        },
+                        "scope": 139,
+                        "src": "1194:386:0",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "external"
+                    },
+                    {
+                        "body": {
+                            "id": 137,
+                            "nodeType": "Block",
+                            "src": "1618:354:0",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "arguments": [
+                                            {
+                                                "commonType": {
+                                                    "typeIdentifier": "t_enum$_RoundStatus_$7",
+                                                    "typeString": "enum TerraconQuestLobby.RoundStatus"
+                                                },
+                                                "id": 114,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "leftExpression": {
+                                                    "baseExpression": {
+                                                        "id": 109,
+                                                        "name": "roundStatus",
+                                                        "nodeType": "Identifier",
+                                                        "overloadedDeclarations": [],
+                                                        "referencedDeclaration": 12,
+                                                        "src": "1649:11:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_mapping$_t_uint256_$_t_enum$_RoundStatus_$7_$",
+                                                            "typeString": "mapping(uint256 => enum TerraconQuestLobby.RoundStatus)"
+                                                        }
+                                                    },
+                                                    "id": 111,
+                                                    "indexExpression": {
+                                                        "id": 110,
+                                                        "name": "currentRoundNo",
+                                                        "nodeType": "Identifier",
+                                                        "overloadedDeclarations": [],
+                                                        "referencedDeclaration": 3,
+                                                        "src": "1661:14:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_uint256",
+                                                            "typeString": "uint256"
+                                                        }
+                                                    },
+                                                    "isConstant": false,
+                                                    "isLValue": true,
+                                                    "isPure": false,
+                                                    "lValueRequested": false,
+                                                    "nodeType": "IndexAccess",
+                                                    "src": "1649:27:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_enum$_RoundStatus_$7",
+                                                        "typeString": "enum TerraconQuestLobby.RoundStatus"
+                                                    }
+                                                },
+                                                "nodeType": "BinaryOperation",
+                                                "operator": "==",
+                                                "rightExpression": {
+                                                    "expression": {
+                                                        "id": 112,
+                                                        "name": "RoundStatus",
+                                                        "nodeType": "Identifier",
+                                                        "overloadedDeclarations": [],
+                                                        "referencedDeclaration": 7,
+                                                        "src": "1680:11:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_type$_t_enum$_RoundStatus_$7_$",
+                                                            "typeString": "type(enum TerraconQuestLobby.RoundStatus)"
+                                                        }
+                                                    },
+                                                    "id": 113,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": true,
+                                                    "lValueRequested": false,
+                                                    "memberLocation": "1692:7:0",
+                                                    "memberName": "STARTED",
+                                                    "nodeType": "MemberAccess",
+                                                    "referencedDeclaration": 4,
+                                                    "src": "1680:19:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_enum$_RoundStatus_$7",
+                                                        "typeString": "enum TerraconQuestLobby.RoundStatus"
+                                                    }
+                                                },
+                                                "src": "1649:50:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                }
+                                            },
+                                            {
+                                                "hexValue": "526f756e64206e6f742073746172746564",
+                                                "id": 115,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": true,
+                                                "kind": "string",
+                                                "lValueRequested": false,
+                                                "nodeType": "Literal",
+                                                "src": "1713:19:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_stringliteral_210f5df0dc4b85ae79e41a7bfea40e58bf9f7435a6c45d2c7bd569ae680518f1",
+                                                    "typeString": "literal_string \"Round not started\""
+                                                },
+                                                "value": "Round not started"
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                },
+                                                {
+                                                    "typeIdentifier": "t_stringliteral_210f5df0dc4b85ae79e41a7bfea40e58bf9f7435a6c45d2c7bd569ae680518f1",
+                                                    "typeString": "literal_string \"Round not started\""
+                                                }
+                                            ],
+                                            "id": 108,
+                                            "name": "require",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [
+                                                4294967278,
+                                                4294967278
+                                            ],
+                                            "referencedDeclaration": 4294967278,
+                                            "src": "1628:7:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                                                "typeString": "function (bool,string memory) pure"
+                                            }
+                                        },
+                                        "id": 116,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "nameLocations": [],
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "1628:114:0",
+                                        "tryCall": false,
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_tuple$__$",
+                                            "typeString": "tuple()"
+                                        }
+                                    },
+                                    "id": 117,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "1628:114:0"
+                                },
+                                {
+                                    "expression": {
+                                        "arguments": [
+                                            {
+                                                "commonType": {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                },
+                                                "id": 126,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "leftExpression": {
+                                                    "commonType": {
+                                                        "typeIdentifier": "t_uint256",
+                                                        "typeString": "uint256"
+                                                    },
+                                                    "id": 123,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": false,
+                                                    "lValueRequested": false,
+                                                    "leftExpression": {
+                                                        "baseExpression": {
+                                                            "id": 119,
+                                                            "name": "roundStartTime",
+                                                            "nodeType": "Identifier",
+                                                            "overloadedDeclarations": [],
+                                                            "referencedDeclaration": 16,
+                                                            "src": "1774:14:0",
+                                                            "typeDescriptions": {
+                                                                "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
+                                                                "typeString": "mapping(uint256 => uint256)"
+                                                            }
+                                                        },
+                                                        "id": 121,
+                                                        "indexExpression": {
+                                                            "id": 120,
+                                                            "name": "currentRoundNo",
+                                                            "nodeType": "Identifier",
+                                                            "overloadedDeclarations": [],
+                                                            "referencedDeclaration": 3,
+                                                            "src": "1789:14:0",
+                                                            "typeDescriptions": {
+                                                                "typeIdentifier": "t_uint256",
+                                                                "typeString": "uint256"
+                                                            }
+                                                        },
+                                                        "isConstant": false,
+                                                        "isLValue": true,
+                                                        "isPure": false,
+                                                        "lValueRequested": false,
+                                                        "nodeType": "IndexAccess",
+                                                        "src": "1774:30:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_uint256",
+                                                            "typeString": "uint256"
+                                                        }
+                                                    },
+                                                    "nodeType": "BinaryOperation",
+                                                    "operator": "+",
+                                                    "rightExpression": {
+                                                        "id": 122,
+                                                        "name": "SINGLE_ROUND_TIME",
+                                                        "nodeType": "Identifier",
+                                                        "overloadedDeclarations": [],
+                                                        "referencedDeclaration": 19,
+                                                        "src": "1807:17:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_uint256",
+                                                            "typeString": "uint256"
+                                                        }
+                                                    },
+                                                    "src": "1774:50:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_uint256",
+                                                        "typeString": "uint256"
+                                                    }
+                                                },
+                                                "nodeType": "BinaryOperation",
+                                                "operator": "<",
+                                                "rightExpression": {
+                                                    "expression": {
+                                                        "id": 124,
+                                                        "name": "block",
+                                                        "nodeType": "Identifier",
+                                                        "overloadedDeclarations": [],
+                                                        "referencedDeclaration": 4294967292,
+                                                        "src": "1843:5:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_magic_block",
+                                                            "typeString": "block"
+                                                        }
+                                                    },
+                                                    "id": 125,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": false,
+                                                    "lValueRequested": false,
+                                                    "memberLocation": "1849:9:0",
+                                                    "memberName": "timestamp",
+                                                    "nodeType": "MemberAccess",
+                                                    "src": "1843:15:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_uint256",
+                                                        "typeString": "uint256"
+                                                    }
+                                                },
+                                                "src": "1774:84:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                }
+                                            },
+                                            {
+                                                "hexValue": "526f756e642074696d65206e6f7420656e646564",
+                                                "id": 127,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": true,
+                                                "kind": "string",
+                                                "lValueRequested": false,
+                                                "nodeType": "Literal",
+                                                "src": "1872:22:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_stringliteral_cf60d27d9f34cf8ccc3aa64160b5b858711282194013523cd977c89ea5d4586e",
+                                                    "typeString": "literal_string \"Round time not ended\""
+                                                },
+                                                "value": "Round time not ended"
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                },
+                                                {
+                                                    "typeIdentifier": "t_stringliteral_cf60d27d9f34cf8ccc3aa64160b5b858711282194013523cd977c89ea5d4586e",
+                                                    "typeString": "literal_string \"Round time not ended\""
+                                                }
+                                            ],
+                                            "id": 118,
+                                            "name": "require",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [
+                                                4294967278,
+                                                4294967278
+                                            ],
+                                            "referencedDeclaration": 4294967278,
+                                            "src": "1753:7:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                                                "typeString": "function (bool,string memory) pure"
+                                            }
+                                        },
+                                        "id": 128,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "nameLocations": [],
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "1753:151:0",
+                                        "tryCall": false,
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_tuple$__$",
+                                            "typeString": "tuple()"
+                                        }
+                                    },
+                                    "id": 129,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "1753:151:0"
+                                },
+                                {
+                                    "expression": {
+                                        "id": 135,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "leftHandSide": {
+                                            "baseExpression": {
+                                                "id": 130,
+                                                "name": "roundStatus",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 12,
+                                                "src": "1915:11:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_mapping$_t_uint256_$_t_enum$_RoundStatus_$7_$",
+                                                    "typeString": "mapping(uint256 => enum TerraconQuestLobby.RoundStatus)"
+                                                }
+                                            },
+                                            "id": 132,
+                                            "indexExpression": {
+                                                "id": 131,
+                                                "name": "currentRoundNo",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 3,
+                                                "src": "1927:14:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                }
+                                            },
+                                            "isConstant": false,
+                                            "isLValue": true,
+                                            "isPure": false,
+                                            "lValueRequested": true,
+                                            "nodeType": "IndexAccess",
+                                            "src": "1915:27:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_enum$_RoundStatus_$7",
+                                                "typeString": "enum TerraconQuestLobby.RoundStatus"
+                                            }
+                                        },
+                                        "nodeType": "Assignment",
+                                        "operator": "=",
+                                        "rightHandSide": {
+                                            "expression": {
+                                                "id": 133,
+                                                "name": "RoundStatus",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 7,
+                                                "src": "1945:11:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_type$_t_enum$_RoundStatus_$7_$",
+                                                    "typeString": "type(enum TerraconQuestLobby.RoundStatus)"
+                                                }
+                                            },
+                                            "id": 134,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": true,
+                                            "lValueRequested": false,
+                                            "memberLocation": "1957:8:0",
+                                            "memberName": "FINISHED",
+                                            "nodeType": "MemberAccess",
+                                            "referencedDeclaration": 5,
+                                            "src": "1945:20:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_enum$_RoundStatus_$7",
+                                                "typeString": "enum TerraconQuestLobby.RoundStatus"
+                                            }
+                                        },
+                                        "src": "1915:50:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_enum$_RoundStatus_$7",
+                                            "typeString": "enum TerraconQuestLobby.RoundStatus"
+                                        }
+                                    },
+                                    "id": 136,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "1915:50:0"
+                                }
+                            ]
+                        },
+                        "functionSelector": "86a594d0",
+                        "id": 138,
+                        "implemented": true,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "cancelRound",
+                        "nameLocation": "1595:11:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 106,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "1606:2:0"
+                        },
+                        "returnParameters": {
+                            "id": 107,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "1618:0:0"
+                        },
+                        "scope": 139,
+                        "src": "1586:386:0",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "external"
+                    }
+                ],
+                "scope": 140,
+                "src": "140:1834:0",
+                "usedErrors": []
+            }
+        ],
+        "src": "39:1936:0"
+    },
+    "functionHashes": {
+        "MAX_PLAYERS_PER_LOBBY()": "88f75fdc",
+        "ROUND_CANCEL_TIME()": "d44bfee9",
+        "SINGLE_ROUND_TIME()": "c9067cbe",
+        "cancelRound()": "86a594d0",
+        "cancelledRounds(uint256)": "b7a4395d",
+        "currentRoundNo()": "1a8fb62e",
+        "finishRound()": "547916ea",
+        "players(uint256,address)": "c0f80921",
+        "roundStartTime(uint256)": "c137a60f",
+        "roundStatus(uint256)": "e35154a5",
+        "startNewRound()": "bd85948c"
+    },
+    "gasEstimates": {
+        "creation": {
+            "codeDepositCost": "196200",
+            "executionCost": "44467",
+            "totalCost": "240667"
+        },
+        "external": {
+            "MAX_PLAYERS_PER_LOBBY()": "251",
+            "ROUND_CANCEL_TIME()": "272",
+            "SINGLE_ROUND_TIME()": "250",
+            "cancelRound()": "35278",
+            "cancelledRounds(uint256)": "2539",
+            "currentRoundNo()": "2285",
+            "finishRound()": "35256",
+            "players(uint256,address)": "2621",
+            "roundStartTime(uint256)": "2471",
+            "roundStatus(uint256)": "2601",
+            "startNewRound()": "48794"
+        }
+    }
+}
