@@ -112,4 +112,35 @@ contract TerraconQuestLobby {
         players[currentRoundNo][tx.origin] = true;
         playerCount[currentRoundNo] += 1;
     }
+
+    modifier playable() {
+        require(
+            roundStatus[currentRoundNo] == RoundStatus.STARTED,
+            "You have not joined current round"
+        );
+        require(
+            roundStartTime[currentRoundNo] + ROUND_PREPARATION_INTERVAL <=
+                block.timestamp,
+            "Too early, round in preps"
+        );
+        require(
+            roundStartTime[currentRoundNo] +
+                ROUND_PREPARATION_INTERVAL +
+                ROUND_PLAY_INTERVAL <=
+                block.timestamp,
+            "Too late, play time ended"
+        );
+        _;
+    }
+
+    function play() external view playable {
+        require(
+            players[currentRoundNo][tx.origin] == true,
+            "You have not joined current round"
+        );
+
+        // TODO: add any game play steps
+        // It is not done because it was not the part of the test
+        // but it expected to have some steps here
+    }
 }
