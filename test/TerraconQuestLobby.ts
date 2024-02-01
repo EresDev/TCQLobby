@@ -33,7 +33,7 @@ describe("TerraconQuestLobby", function () {
       );
     });
 
-    it("Should cancel a round after preparation", async function () {
+    it("Should cancel a round after preparation if lobby not full", async function () {
       const { lobby } = await deployFixture();
 
       await timeTravel(1800);
