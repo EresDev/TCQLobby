@@ -86,7 +86,7 @@ describe("TerraconQuestLobby", function () {
       ).to.equal(ethers.parseEther("0.05"));
     });
 
-    it("Should revert game play if player not lobby", async function () {
+    it("Should revert game play if player has not already joined", async function () {
       const { lobby, signer1: otherAccount } = await deployFixture();
       await timeTravel(1801);
 
