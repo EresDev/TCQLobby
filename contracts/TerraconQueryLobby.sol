@@ -1,6 +1,10 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.9;
 
+/// @title TerraconQuest Lobby
+/// @author EresDev
+/// @notice You can use this contract for single lobby
+
 // Uncomment this line to use console.log
 // import "hardhat/console.sol";
 

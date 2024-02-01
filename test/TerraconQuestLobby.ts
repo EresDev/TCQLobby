@@ -1,7 +1,6 @@
 import { expect } from "chai";
 import { ethers } from "hardhat";
 import { RoundStatus, timeTravel } from "./helpers";
-import { time } from "console";
 import { parseEther } from "ethers";
 
 describe("TerraconQuestLobby", function () {
