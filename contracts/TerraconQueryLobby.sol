@@ -95,6 +95,7 @@ contract TerraconQuestLobby {
     // Play
 
     modifier joinable() {
+        require(players[currentRoundNo][tx.origin] == false, "Already joined");
         require(
             roundStatus[currentRoundNo] == RoundStatus.STARTED,
             "Wait for new round"

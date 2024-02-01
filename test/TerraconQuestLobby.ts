@@ -71,6 +71,20 @@ describe("TerraconQuestLobby", function () {
       ).to.equal(ethers.parseEther("0.05"));
     });
 
+    it("Should revert if already joined the lobby", async function () {
+      const { lobby } = await deployFixture();
+
+      await lobby.join({ value: ethers.parseEther("0.05") });
+
+      await expect(
+        lobby.join({ value: ethers.parseEther("0.05") })
+      ).to.revertedWith("Already joined");
+
+      expect(
+        await ethers.provider.getBalance(await lobby.getAddress())
+      ).to.equal(ethers.parseEther("0.05"));
+    });
+
     it("Should revert game play if player not lobby", async function () {
       const { lobby, otherAccount } = await deployFixture();
       await timeTravel(1801);
