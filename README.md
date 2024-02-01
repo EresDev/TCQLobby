@@ -1,4 +1,4 @@
-# Terra Conquest Lobby
+# TCQ Lobby
 
 This is a project based on hardhat.
 
