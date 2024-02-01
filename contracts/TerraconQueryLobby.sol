@@ -139,7 +139,7 @@ contract TerraconQuestLobby {
             "You have not joined current round"
         );
 
-        // TODO: add any game play steps
+        // TODO: add any game play steps, e.g. look for silver mines
         // It is not done because it was not the part of the test
         // but it expected to have some steps here
     }
