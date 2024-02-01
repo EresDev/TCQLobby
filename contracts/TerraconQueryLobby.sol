@@ -27,6 +27,8 @@ contract TerraconQuestLobby {
 
     uint public maxPlayersPerRound;
 
+    address public vault;
+
     // roundNo => player => true/false
     mapping(uint => mapping(address => bool)) public players;
 
@@ -46,10 +48,11 @@ contract TerraconQuestLobby {
     );
     event RoundStarted(uint256 indexed roundNo, address indexed byPlayer);
 
-    constructor(uint _maxPlayersPerRound) {
+    constructor(address _vault, uint _maxPlayersPerRound) {
         currentRoundNo = 1;
         roundStartTime[currentRoundNo] = block.timestamp;
         maxPlayersPerRound = _maxPlayersPerRound;
+        vault = _vault;
     }
 
     // @notice previous round should either be finished or cancelled
@@ -123,6 +126,11 @@ contract TerraconQuestLobby {
 
         players[currentRoundNo][msg.sender] = true;
         playerCount[currentRoundNo] += 1;
+
+        //transfer all eth for this round to vault if max players reached
+        if (playerCount[currentRoundNo] == maxPlayersPerRound) {
+            payable(vault).transfer(playerCount[currentRoundNo] * BUY_IN_FEE);
+        }
 
         emit Joined(msg.sender, currentRoundNo, BUY_IN_FEE);
     }

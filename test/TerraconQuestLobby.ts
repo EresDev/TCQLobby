@@ -2,6 +2,7 @@ import { expect } from "chai";
 import { ethers } from "hardhat";
 import { RoundStatus, timeTravel } from "./helpers";
 import { time } from "console";
+import { parseEther } from "ethers";
 
 describe("TerraconQuestLobby", function () {
   // We define a fixture to reuse the same setup in every test.
@@ -9,15 +10,15 @@ describe("TerraconQuestLobby", function () {
   // and reset Hardhat Network to that snapshot in every test.
   async function deployFixture() {
     // Contracts are deployed using the first signer/account by default
-    const [owner, signer1, signer2, signer3, signer4, signer5] =
+    const [owner, signer1, signer2, signer3, signer4, signer5, vault] =
       await ethers.getSigners();
 
     const TerraconQuestLobby = await ethers.getContractFactory(
       "TerraconQuestLobby"
     );
-    const lobby = await TerraconQuestLobby.deploy(5);
+    const lobby = await TerraconQuestLobby.deploy(await vault.getAddress(), 5);
 
-    return { lobby, owner, signer1, signer2, signer3, signer4, signer5 };
+    return { lobby, owner, signer1, signer2, signer3, signer4, signer5, vault };
   }
 
   describe("TerraconQuestLobby tests", function () {
@@ -98,6 +99,27 @@ describe("TerraconQuestLobby", function () {
       await expect(
         lobby.join({ value: ethers.parseEther("0.05") })
       ).to.revertedWith("Lobby is full");
+    });
+
+    it("Should transfer eth to vault when lobby gets filled", async function () {
+      const { lobby, signer1, signer2, signer3, signer4, signer5, vault } =
+        await deployFixture();
+
+      const vaultAddress = await vault.getAddress();
+      const balanceBefore = await ethers.provider.getBalance(vaultAddress);
+
+      await Promise.all(
+        [signer1, signer2, signer3, signer4, signer5].map(async (signer) => {
+          await lobby
+            .connect(signer)
+            .join({ value: ethers.parseEther("0.05") });
+        })
+      );
+
+      const balanceAfter = await ethers.provider.getBalance(vaultAddress);
+      expect(balanceAfter).to.equal(
+        BigInt(balanceBefore) + parseEther("0.05") * BigInt(5)
+      );
     });
 
     it("Should revert game play if player has not already joined", async function () {
