@@ -1,6 +1,7 @@
 import { expect } from "chai";
 import { ethers } from "hardhat";
 import { RoundStatus, timeTravel } from "./helpers";
+import { time } from "console";
 
 describe("TerraconQuestLobby", function () {
   // We define a fixture to reuse the same setup in every test.
@@ -132,6 +133,18 @@ describe("TerraconQuestLobby", function () {
       expect(
         await ethers.provider.getBalance(await lobby.getAddress())
       ).to.equal(ethers.parseEther("0"));
+    });
+
+    it("Should revert unjoin after prep time", async function () {
+      const { lobby, signer1 } = await deployFixture();
+
+      await lobby.join({ value: ethers.parseEther("0.05") });
+
+      await timeTravel(1801);
+
+      await expect(lobby.unjoin()).to.revertedWith(
+        "Too late, prep time passed"
+      );
     });
 
     it("Should revert game play if not play time", async function () {
