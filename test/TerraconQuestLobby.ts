@@ -86,6 +86,19 @@ describe("TerraconQuestLobby", function () {
       ).to.equal(ethers.parseEther("0.05"));
     });
 
+    it("Should revert join for new players when max player limit reached", async function () {
+      const { lobby, signer1, signer2, signer3, signer4, signer5 } =
+        await deployFixture();
+
+      [signer1, signer2, signer3, signer4, signer5].forEach(async (signer) => {
+        await lobby.connect(signer).join({ value: ethers.parseEther("0.05") });
+      });
+
+      await expect(
+        lobby.join({ value: ethers.parseEther("0.05") })
+      ).to.revertedWith("Lobby is full");
+    });
+
     it("Should revert game play if player has not already joined", async function () {
       const { lobby, signer1: otherAccount } = await deployFixture();
       await timeTravel(1801);
