@@ -80,6 +80,25 @@ describe("TerraconQuestLobby", function () {
       );
     });
 
+    it("Should revert game play if not play time", async function () {
+      const { lobby, otherAccount } = await deployFixture();
+      await lobby
+        .connect(otherAccount)
+        .join({ value: ethers.parseEther("0.05") });
+
+      await expect(lobby.connect(otherAccount).play()).to.revertedWith(
+        "Too early, round in preps"
+      );
+
+      await timeTravel(1801);
+      await expect(lobby.connect(otherAccount).play()).to.not.be.reverted;
+
+      await timeTravel(1801);
+      await expect(lobby.connect(otherAccount).play()).to.revertedWith(
+        "Too late, play time ended"
+      );
+    });
+
     // describe("Events", function () {
     //   it("Should emit an event on withdrawals", async function () {
     //     const { lock, unlockTime, lockedAmount } = await loadFixture(
