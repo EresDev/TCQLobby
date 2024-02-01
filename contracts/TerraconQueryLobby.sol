@@ -28,7 +28,7 @@ contract TerraconQuestLobby {
     // roundNo => player => true/false
     mapping(uint => mapping(address => bool)) public players;
 
-    // roundNo => count => true/false
+    // roundNo => count
     mapping(uint => uint) public playerCount;
 
     mapping(uint => bool) public cancelledRounds;
@@ -88,5 +88,26 @@ contract TerraconQuestLobby {
 
         cancelledRounds[currentRoundNo] = true;
         roundStatus[currentRoundNo] = RoundStatus.CANCELLED;
+    }
+
+    // Play
+
+    modifier joinable() {
+        require(
+            roundStatus[currentRoundNo] == RoundStatus.STARTED,
+            "Wait for new round"
+        );
+        require(
+            playerCount[currentRoundNo] < PLAYERS_COUNT_PER_LOBBY,
+            "Lobby is full"
+        );
+        _;
+    }
+
+    function join() external payable joinable {
+        require(msg.value == 0.05 ether, "Invalid join fee");
+
+        players[currentRoundNo][tx.origin] = true;
+        playerCount[currentRoundNo] += 1;
     }
 }

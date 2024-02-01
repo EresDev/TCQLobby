@@ -1,8 +1,3 @@
-import {
-  time,
-  loadFixture,
-} from "@nomicfoundation/hardhat-toolbox/network-helpers";
-import { anyValue } from "@nomicfoundation/hardhat-chai-matchers/withArgs";
 import { expect } from "chai";
 import { ethers } from "hardhat";
 import { RoundStatus, timeTravel } from "./helpers";
@@ -62,6 +57,18 @@ describe("TerraconQuestLobby", function () {
       await lobby.finishRound();
 
       expect(await lobby.roundStatus(1)).to.equal(RoundStatus.FINISHED);
+    });
+
+    it("Should join lobby", async function () {
+      const { lobby } = await deployFixture();
+
+      await lobby.join({ value: ethers.parseEther("0.05") });
+
+      expect(await lobby.playerCount(1)).to.equal(1);
+
+      expect(
+        await ethers.provider.getBalance(await lobby.getAddress())
+      ).to.equal(ethers.parseEther("0.05"));
     });
 
     // describe("Events", function () {
