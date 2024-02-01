@@ -1,14 +1,14 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.9;
 
-/// @title TerraconQuest Lobby
+/// @title TCQ Lobby
 /// @author EresDev
-/// @notice You can use this contract for single lobby
+/// @notice This is TCQ Game Play Lobby smart contract
 
 // Uncomment this line to use console.log
 // import "hardhat/console.sol";
 
-contract TerraconQuestLobby {
+contract TCQLobby {
     uint public currentRoundNo;
 
     enum RoundStatus {
