@@ -165,5 +165,23 @@ describe("TerraconQuestLobby", function () {
         "Too late, play time ended"
       );
     });
+
+    describe("Events", function () {
+      it("Should emit an event on join", async function () {
+        const { lobby, owner } = await deployFixture();
+
+        await expect(lobby.join({ value: ethers.parseEther("0.05") }))
+          .to.emit(lobby, "Joined")
+          .withArgs(await owner.getAddress(), 1, ethers.parseEther("0.05"));
+      });
+      it("Should emit an event on unjoin", async function () {
+        const { lobby, owner } = await deployFixture();
+        await lobby.join({ value: ethers.parseEther("0.05") });
+
+        await expect(lobby.unjoin())
+          .to.emit(lobby, "Unjoined")
+          .withArgs(await owner.getAddress(), 1, ethers.parseEther("0.05"));
+      });
+    });
   });
 });

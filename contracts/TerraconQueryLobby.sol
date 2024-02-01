@@ -38,6 +38,14 @@ contract TerraconQuestLobby {
     // (cancelled)roundNo => player => true/false
     mapping(uint => mapping(address => bool)) refunds;
 
+    event Joined(address indexed player, uint256 indexed roundNo, uint fee);
+    event Unjoined(
+        address indexed player,
+        uint256 indexed roundNo,
+        uint feeRefund
+    );
+    event RoundStarted(uint256 indexed roundNo, address indexed byPlayer);
+
     constructor(uint _maxPlayersPerRound) {
         currentRoundNo = 1;
         roundStartTime[currentRoundNo] = block.timestamp;
@@ -53,6 +61,8 @@ contract TerraconQuestLobby {
         );
         roundStartTime[currentRoundNo + 1] = block.timestamp;
         ++currentRoundNo;
+
+        emit RoundStarted(currentRoundNo, tx.origin);
     }
 
     function finishRound() external {
@@ -113,6 +123,8 @@ contract TerraconQuestLobby {
 
         players[currentRoundNo][tx.origin] = true;
         playerCount[currentRoundNo] += 1;
+
+        emit Joined(tx.origin, currentRoundNo, BUY_IN_FEE);
     }
 
     modifier unjoinable() {
@@ -134,6 +146,8 @@ contract TerraconQuestLobby {
         playerCount[currentRoundNo] -= 1;
 
         payable(tx.origin).transfer(BUY_IN_FEE);
+
+        emit Unjoined(tx.origin, currentRoundNo, BUY_IN_FEE);
     }
 
     modifier playable() {
