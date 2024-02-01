@@ -126,7 +126,7 @@ contract TerraconQuestLobby {
         require(
             roundStartTime[currentRoundNo] +
                 ROUND_PREPARATION_INTERVAL +
-                ROUND_PLAY_INTERVAL <=
+                ROUND_PLAY_INTERVAL >
                 block.timestamp,
             "Too late, play time ended"
         );

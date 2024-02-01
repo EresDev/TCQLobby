@@ -71,6 +71,15 @@ describe("TerraconQuestLobby", function () {
       ).to.equal(ethers.parseEther("0.05"));
     });
 
+    it("Should revert game play if player not lobby", async function () {
+      const { lobby, otherAccount } = await deployFixture();
+      await timeTravel(1801);
+
+      await expect(lobby.connect(otherAccount).play()).to.revertedWith(
+        "You have not joined current round"
+      );
+    });
+
     // describe("Events", function () {
     //   it("Should emit an event on withdrawals", async function () {
     //     const { lock, unlockTime, lockedAmount } = await loadFixture(
