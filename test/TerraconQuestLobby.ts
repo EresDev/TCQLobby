@@ -50,7 +50,7 @@ describe("TerraconQuestLobby", function () {
       await expect(lobby.finishRound()).to.revertedWith("Round time not ended");
     });
 
-    it("Should finish a round after finish time", async function () {
+    it("Should finish a round at correct time", async function () {
       const { lobby } = await deployFixture();
 
       await timeTravel(3600);
