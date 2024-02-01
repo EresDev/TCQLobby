@@ -23,9 +23,9 @@ contract TerraconQuestLobby {
 
     uint public constant ROUND_PLAY_INTERVAL = 30 minutes;
 
-    uint public constant PLAYERS_COUNT_PER_LOBBY = 500;
-
     uint public constant BUY_IN_FEE = 0.05 ether;
+
+    uint public maxPlayersPerRound;
 
     // roundNo => player => true/false
     mapping(uint => mapping(address => bool)) public players;
@@ -38,9 +38,10 @@ contract TerraconQuestLobby {
     // (cancelled)roundNo => player => true/false
     mapping(uint => mapping(address => bool)) refunds;
 
-    constructor() {
+    constructor(uint _maxPlayersPerRound) {
         currentRoundNo = 1;
         roundStartTime[currentRoundNo] = block.timestamp;
+        maxPlayersPerRound = _maxPlayersPerRound;
     }
 
     // @notice previous round should either be finished or cancelled
@@ -84,7 +85,7 @@ contract TerraconQuestLobby {
         );
 
         require(
-            playerCount[currentRoundNo] < PLAYERS_COUNT_PER_LOBBY,
+            playerCount[currentRoundNo] < maxPlayersPerRound,
             "Lobby is full"
         );
 
@@ -101,7 +102,7 @@ contract TerraconQuestLobby {
             "Wait for new round"
         );
         require(
-            playerCount[currentRoundNo] < PLAYERS_COUNT_PER_LOBBY,
+            playerCount[currentRoundNo] < maxPlayersPerRound,
             "Lobby is full"
         );
         _;

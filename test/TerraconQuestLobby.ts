@@ -8,14 +8,15 @@ describe("TerraconQuestLobby", function () {
   // and reset Hardhat Network to that snapshot in every test.
   async function deployFixture() {
     // Contracts are deployed using the first signer/account by default
-    const [owner, otherAccount] = await ethers.getSigners();
+    const [owner, signer1, signer2, signer3, signer4, signer5] =
+      await ethers.getSigners();
 
     const TerraconQuestLobby = await ethers.getContractFactory(
       "TerraconQuestLobby"
     );
-    const lobby = await TerraconQuestLobby.deploy();
+    const lobby = await TerraconQuestLobby.deploy(5);
 
-    return { lobby, owner, otherAccount };
+    return { lobby, owner, signer1, signer2, signer3, signer4, signer5 };
   }
 
   describe("TerraconQuestLobby tests", function () {
@@ -86,7 +87,7 @@ describe("TerraconQuestLobby", function () {
     });
 
     it("Should revert game play if player not lobby", async function () {
-      const { lobby, otherAccount } = await deployFixture();
+      const { lobby, signer1: otherAccount } = await deployFixture();
       await timeTravel(1801);
 
       await expect(lobby.connect(otherAccount).play()).to.revertedWith(
@@ -95,7 +96,7 @@ describe("TerraconQuestLobby", function () {
     });
 
     it("Should revert game play if not play time", async function () {
-      const { lobby, otherAccount } = await deployFixture();
+      const { lobby, signer1: otherAccount } = await deployFixture();
       await lobby
         .connect(otherAccount)
         .join({ value: ethers.parseEther("0.05") });
