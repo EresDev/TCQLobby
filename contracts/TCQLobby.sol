@@ -44,6 +44,14 @@ contract TCQLobby {
     // (cancelled)roundNo => player => true/false
     mapping(uint => mapping(address => bool)) refundsClaimed;
 
+    constructor(address _vault, uint _maxPlayersPerRound) {
+        require(_vault != address(0), "vault cannot be zero address");
+        currentRoundNo = 1;
+        roundStartTime[currentRoundNo] = block.timestamp;
+        maxPlayersPerRound = _maxPlayersPerRound;
+        vault = _vault;
+    }
+
     event Joined(address indexed player, uint256 indexed roundNo, uint fee);
     event Unjoined(
         address indexed player,
@@ -57,15 +65,6 @@ contract TCQLobby {
         uint amount
     );
 
-    constructor(address _vault, uint _maxPlayersPerRound) {
-        require(_vault != address(0), "vault cannot be zero address");
-        currentRoundNo = 1;
-        roundStartTime[currentRoundNo] = block.timestamp;
-        maxPlayersPerRound = _maxPlayersPerRound;
-        vault = _vault;
-    }
-
-    // @notice previous round should either be finished or cancelled
     function startNewRound() external {
         require(
             roundStatus[currentRoundNo] == RoundStatus.FINISHED ||
@@ -116,7 +115,19 @@ contract TCQLobby {
         roundStatus[currentRoundNo] = RoundStatus.CANCELLED;
     }
 
-    // Play
+    function join() external payable joinable {
+        require(msg.value == BUY_IN_FEE, "Invalid join fee");
+
+        players[currentRoundNo][msg.sender] = true;
+        playerCount[currentRoundNo] += 1;
+
+        //transfer all eth for this round to vault if max players reached
+        if (playerCount[currentRoundNo] == maxPlayersPerRound) {
+            payable(vault).transfer(playerCount[currentRoundNo] * BUY_IN_FEE);
+        }
+
+        emit Joined(msg.sender, currentRoundNo, BUY_IN_FEE);
+    }
 
     modifier joinable() {
         require(players[currentRoundNo][msg.sender] == false, "Already joined");
@@ -131,18 +142,15 @@ contract TCQLobby {
         _;
     }
 
-    function join() external payable joinable {
-        require(msg.value == BUY_IN_FEE, "Invalid join fee");
+    function unjoin() external unjoinable {
+        players[currentRoundNo][msg.sender] = false;
+        playerCount[currentRoundNo] -= 1;
+        refundsClaimed[currentRoundNo][msg.sender] = true;
 
-        players[currentRoundNo][msg.sender] = true;
-        playerCount[currentRoundNo] += 1;
+        payable(msg.sender).transfer(BUY_IN_FEE);
 
-        //transfer all eth for this round to vault if max players reached
-        if (playerCount[currentRoundNo] == maxPlayersPerRound) {
-            payable(vault).transfer(playerCount[currentRoundNo] * BUY_IN_FEE);
-        }
-
-        emit Joined(msg.sender, currentRoundNo, BUY_IN_FEE);
+        emit Unjoined(msg.sender, currentRoundNo, BUY_IN_FEE);
+        emit Refunded(currentRoundNo, msg.sender, BUY_IN_FEE);
     }
 
     modifier unjoinable() {
@@ -159,15 +167,11 @@ contract TCQLobby {
         _;
     }
 
-    function unjoin() external unjoinable {
-        players[currentRoundNo][msg.sender] = false;
-        playerCount[currentRoundNo] -= 1;
-        refundsClaimed[currentRoundNo][msg.sender] = true;
-
+    function claimRefund(uint roundNo) external refundable(roundNo) {
+        refundsClaimed[roundNo][msg.sender] == true;
         payable(msg.sender).transfer(BUY_IN_FEE);
 
-        emit Unjoined(msg.sender, currentRoundNo, BUY_IN_FEE);
-        emit Refunded(currentRoundNo, msg.sender, BUY_IN_FEE);
+        emit Refunded(roundNo, msg.sender, BUY_IN_FEE);
     }
 
     modifier refundable(uint roundNo) {
@@ -180,11 +184,15 @@ contract TCQLobby {
         _;
     }
 
-    function claimRefund(uint roundNo) external refundable(roundNo) {
-        refundsClaimed[roundNo][msg.sender] == true;
-        payable(msg.sender).transfer(BUY_IN_FEE);
+    function play() external view playable {
+        require(
+            players[currentRoundNo][msg.sender] == true,
+            "You have not joined current round"
+        );
 
-        emit Refunded(roundNo, msg.sender, BUY_IN_FEE);
+        // TODO: add any game play steps, e.g. look for silver mines
+        // It is not done because it was not the part of the test
+        // but it is expected to have some steps here
     }
 
     modifier playable() {
@@ -205,16 +213,5 @@ contract TCQLobby {
             "Too late, play time ended"
         );
         _;
-    }
-
-    function play() external view playable {
-        require(
-            players[currentRoundNo][msg.sender] == true,
-            "You have not joined current round"
-        );
-
-        // TODO: add any game play steps, e.g. look for silver mines
-        // It is not done because it was not the part of the test
-        // but it is expected to have some steps here
     }
 }
