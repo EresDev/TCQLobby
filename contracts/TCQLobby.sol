@@ -29,9 +29,9 @@ contract TCQLobby {
 
     uint public constant BUY_IN_FEE = 0.05 ether;
 
-    uint public maxPlayersPerRound;
+    uint public immutable maxPlayersPerRound;
 
-    address public vault;
+    address public immutable vault;
 
     // roundNo => player => true/false
     mapping(uint => mapping(address => bool)) public players;
@@ -58,6 +58,7 @@ contract TCQLobby {
     );
 
     constructor(address _vault, uint _maxPlayersPerRound) {
+        require(_vault != address(0), "vault cannot be zero address");
         currentRoundNo = 1;
         roundStartTime[currentRoundNo] = block.timestamp;
         maxPlayersPerRound = _maxPlayersPerRound;
