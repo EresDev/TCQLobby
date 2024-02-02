@@ -95,6 +95,21 @@ describe("TCQLobby", function () {
       ).to.revertedWith("Lobby is full");
     });
 
+    it("Should revert play if required number of players did not join", async function () {
+      const { lobby, signer1, signer2, signer3, signer4, signer5 } =
+        await deploy();
+
+      [signer1, signer2, signer3, signer4].forEach(async (signer) => {
+        await lobby.connect(signer).join({ value: ethers.parseEther("0.05") });
+      });
+
+      await timeTravel(1801);
+
+      await expect(lobby.connect(signer1).play()).to.revertedWith(
+        "Not enough players"
+      );
+    });
+
     it("Should transfer eth to vault when lobby gets filled", async function () {
       const { lobby, signer1, signer2, signer3, signer4, signer5, vault } =
         await deploy();
@@ -117,10 +132,15 @@ describe("TCQLobby", function () {
     });
 
     it("Should revert game play if player has not already joined", async function () {
-      const { lobby, signer1: otherAccount } = await deploy();
-      await timeTravel(1801);
+      const { lobby, signer1, signer2, signer3, signer4, signer5, owner } =
+        await deploy();
 
-      await expect(lobby.connect(otherAccount).play()).to.revertedWith(
+      [signer1, signer2, signer3, signer4, signer5].forEach(async (signer) => {
+        await lobby.connect(signer).join({ value: ethers.parseEther("0.05") });
+      });
+
+      await timeTravel(1801);
+      await expect(lobby.connect(owner).play()).to.revertedWith(
         "You have not joined current round"
       );
     });
@@ -164,20 +184,22 @@ describe("TCQLobby", function () {
     });
 
     it("Should revert game play if not play time", async function () {
-      const { lobby, signer1: otherAccount } = await deploy();
-      await lobby
-        .connect(otherAccount)
-        .join({ value: ethers.parseEther("0.05") });
+      const { lobby, signer1, signer2, signer3, signer4, signer5 } =
+        await deploy();
 
-      await expect(lobby.connect(otherAccount).play()).to.revertedWith(
+      [signer1, signer2, signer3, signer4, signer5].forEach(async (signer) => {
+        await lobby.connect(signer).join({ value: ethers.parseEther("0.05") });
+      });
+
+      await expect(lobby.connect(signer1).play()).to.revertedWith(
         "Too early, round in preps"
       );
 
       await timeTravel(1801);
-      await expect(lobby.connect(otherAccount).play()).to.not.be.reverted;
+      await expect(lobby.connect(signer1).play()).to.not.be.reverted;
 
       await timeTravel(1801);
-      await expect(lobby.connect(otherAccount).play()).to.revertedWith(
+      await expect(lobby.connect(signer1).play()).to.revertedWith(
         "Too late, play time ended"
       );
     });

@@ -212,6 +212,10 @@ contract TCQLobby {
                 block.timestamp,
             "Too late, play time ended"
         );
+        require(
+            playerCount[currentRoundNo] == maxPlayersPerRound,
+            "Not enough players"
+        );
         _;
     }
 }
