@@ -48,12 +48,26 @@ describe("TCQLobby", function () {
     });
 
     it("Should finish a round at correct time", async function () {
-      const { lobby } = await deploy();
+      const { lobby, signer1, signer2, signer3, signer4, signer5 } =
+        await deploy();
+
+      [signer1, signer2, signer3, signer4, signer5].forEach(async (signer) => {
+        await lobby.connect(signer).join({ value: ethers.parseEther("0.05") });
+      });
 
       await timeTravel(3600);
       await lobby.finishRound();
 
       expect(await lobby.roundStatus(1)).to.equal(RoundStatus.FINISHED);
+    });
+
+    it("Should revert finish a round if players not enough", async function () {
+      const { lobby } = await deploy();
+
+      await timeTravel(3600);
+      await expect(lobby.finishRound()).to.revertedWith(
+        "Not enough players, cancel round"
+      );
     });
 
     it("Should join lobby", async function () {

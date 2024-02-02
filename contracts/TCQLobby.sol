@@ -91,6 +91,11 @@ contract TCQLobby {
             "Round time not ended"
         );
 
+        require(
+            playerCount[currentRoundNo] == maxPlayersPerRound,
+            "Not enough players, cancel round"
+        );
+
         roundStatus[currentRoundNo] = RoundStatus.FINISHED;
     }
 
