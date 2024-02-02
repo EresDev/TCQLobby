@@ -219,7 +219,7 @@ describe("TCQLobby", function () {
         .withArgs(await owner.getAddress(), 1, ethers.parseEther("0.05"));
     });
 
-    it("Should emit refund events on unjoin", async function () {
+    it("Should emit refund event on unjoin", async function () {
       const { lobby, owner } = await deploy();
       await lobby.join({ value: ethers.parseEther("0.05") });
 

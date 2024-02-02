@@ -1,4 +1,4 @@
-import { network, ethers } from "hardhat";
+import { network } from "hardhat";
 
 export enum RoundStatus {
   STARTED,
