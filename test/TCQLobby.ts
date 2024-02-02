@@ -182,6 +182,25 @@ describe("TCQLobby", function () {
       );
     });
 
+    it("Should claim refund of a cancelled round", async function () {
+      const { lobby } = await deploy();
+
+      await lobby.join({ value: ethers.parseEther("0.05") });
+      await timeTravel(1801);
+      await lobby.cancelRound();
+
+      expect(await lobby.claimRefund(1)).to.not.be.reverted;
+    });
+
+    it("Should revert claim refund of a not joined round", async function () {
+      const { lobby } = await deploy();
+
+      await timeTravel(1801);
+      await lobby.cancelRound();
+
+      await expect(lobby.claimRefund(1)).revertedWith("You did not join");
+    });
+
     describe("Events", function () {
       it("Should emit an event on join", async function () {
         const { lobby, owner } = await deploy();
@@ -190,13 +209,34 @@ describe("TCQLobby", function () {
           .to.emit(lobby, "Joined")
           .withArgs(await owner.getAddress(), 1, ethers.parseEther("0.05"));
       });
-      it("Should emit an event on unjoin", async function () {
+      it("Should emit an events on unjoin", async function () {
         const { lobby, owner } = await deploy();
         await lobby.join({ value: ethers.parseEther("0.05") });
 
         await expect(lobby.unjoin())
           .to.emit(lobby, "Unjoined")
           .withArgs(await owner.getAddress(), 1, ethers.parseEther("0.05"));
+      });
+
+      it("Should emit refund events on unjoin", async function () {
+        const { lobby, owner } = await deploy();
+        await lobby.join({ value: ethers.parseEther("0.05") });
+
+        await expect(lobby.unjoin())
+          .to.emit(lobby, "Refunded")
+          .withArgs(1, await owner.getAddress(), ethers.parseEther("0.05"));
+      });
+
+      it("Should emit an event on refund", async function () {
+        const { lobby, owner } = await deploy();
+
+        await lobby.join({ value: ethers.parseEther("0.05") });
+        await timeTravel(1801);
+        await lobby.cancelRound();
+
+        await expect(lobby.claimRefund(1))
+          .to.emit(lobby, "Refunded")
+          .withArgs(1, await owner.getAddress(), ethers.parseEther("0.05"));
       });
     });
   });

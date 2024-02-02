@@ -42,7 +42,7 @@ contract TCQLobby {
     mapping(uint => bool) public cancelledRounds;
 
     // (cancelled)roundNo => player => true/false
-    mapping(uint => mapping(address => bool)) refunds;
+    mapping(uint => mapping(address => bool)) refundsClaimed;
 
     event Joined(address indexed player, uint256 indexed roundNo, uint fee);
     event Unjoined(
@@ -51,6 +51,11 @@ contract TCQLobby {
         uint feeRefund
     );
     event RoundStarted(uint256 indexed roundNo, address indexed byPlayer);
+    event Refunded(
+        uint256 indexed roundNo,
+        address indexed player,
+        uint amount
+    );
 
     constructor(address _vault, uint _maxPlayersPerRound) {
         currentRoundNo = 1;
@@ -156,10 +161,29 @@ contract TCQLobby {
     function unjoin() external unjoinable {
         players[currentRoundNo][msg.sender] = false;
         playerCount[currentRoundNo] -= 1;
+        refundsClaimed[currentRoundNo][msg.sender] = true;
 
         payable(msg.sender).transfer(BUY_IN_FEE);
 
         emit Unjoined(msg.sender, currentRoundNo, BUY_IN_FEE);
+        emit Refunded(currentRoundNo, msg.sender, BUY_IN_FEE);
+    }
+
+    modifier refundable(uint roundNo) {
+        require(cancelledRounds[roundNo] == true, "Round not cancelled");
+        require(players[roundNo][msg.sender] == true, "You did not join");
+        require(
+            refundsClaimed[roundNo][msg.sender] == false,
+            "Already refunded"
+        );
+        _;
+    }
+
+    function claimRefund(uint roundNo) external refundable(roundNo) {
+        refundsClaimed[roundNo][msg.sender] == true;
+        payable(msg.sender).transfer(BUY_IN_FEE);
+
+        emit Refunded(roundNo, msg.sender, BUY_IN_FEE);
     }
 
     modifier playable() {
