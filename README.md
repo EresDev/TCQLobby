@@ -24,3 +24,7 @@ Create a lobby system where a user can enroll in a game round.
 - Maintain a record of enrolled players and their deposits.
 - Bonus: Add a feature for refunding deposits if a lobby is canceled or a player withdraws before the game starts.
 - Ensure ETH is stored safely in vault
+
+## Gas Usage
+
+![Gas Usage](https://raw.githubusercontent.com/EresDev/TCQLobby/main/docs/GasUsage.png)
